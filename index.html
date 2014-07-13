@@ -1,0 +1,39 @@
+<h1>
+
+<div>Input</div>
+<textarea class="input">كر، انت مذهل</textarea>
+
+<div>Output</div>
+<div class="output">
+  _____
+</div>
+
+<div>Click a character</div>
+<div class="chars">
+  _____
+</div>
+
+</h1>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script>
+var refreshOutput = function(){
+  var arabic = $('.input').val()
+
+  $('.output').html('')
+  for(var i=0; i < arabic.length; i++){
+
+    // Choose text modifiers here so it renders with proper arabic joining
+    $('.output').append('<span class="char">&zwj;' + arabic[i] + '&zwj;</span>&zwj;')
+
+  }
+
+  $('.char').click(function(){
+    $('.chars').html($(this).html())
+  })
+}
+
+$('.input').on('input', refreshOutput)
+refreshOutput()
+</script>
